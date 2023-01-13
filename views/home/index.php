@@ -1,8 +1,4 @@
 <?php
-
-
 $title = "Librería de peliculas";
 $children = "main.php";
-
-
-include("../global/layout.php");
+include("../layout/index.php");
