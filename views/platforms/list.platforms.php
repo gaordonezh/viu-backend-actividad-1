@@ -1,18 +1,34 @@
+<?php
+require_once "../../controllers/Platforms.controller.php";
+
+$platforms = new PlatformController();
+$list = $platforms->getPlatforms();
+?>
 <section>
-  <div class="mb-3">
-    <label for="exampleFormControlInput1" class="form-label">Email address</label>
-    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+  <div class="d-flex justify-content-between flex-wrap">
+    <h1>Plataformas</h1>
+    <a type="button" href="create.php" class="btn btn-outline-primary">AGREGAR</a>
   </div>
-  <div class="mb-3">
-    <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-  </div>
-  <button type="button" class="btn btn-outline-primary">Primary</button>
-  <button type="button" class="btn btn-outline-secondary">Secondary</button>
-  <button type="button" class="btn btn-outline-success">Success</button>
-  <button type="button" class="btn btn-outline-info">Info</button>
-  <button type="button" class="btn btn-outline-warning">Warning</button>
-  <button type="button" class="btn btn-outline-danger">Danger</button>
-  <button type="button" class="btn btn-outline-light">Light</button>
-  <button type="button" class="btn btn-outline-dark">Dark</button>
+
+  <table class="table table-hover">
+    <thead>
+      <tr class="table-primary">
+        <th>CÓDIGO</th>
+        <th>NOMBRE</th>
+        <th>ACCIONES</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php foreach ($list as $platform) { ?>
+        <tr class="table-light">
+          <th><?= $platform->id ?></th>
+          <td><?= $platform->name ?></td>
+          <td>
+            <a href="edit.php?id=<?= $platform->id ?>" class="btn btn-outline-info" style="padding: 5px 10px;">Editar</a>
+            <a href="delete.php?id=<?= $platform->id ?>" class="btn btn-outline-danger" style="padding: 5px 10px;">Eliminar</a>
+          </td>
+        </tr>
+      <?php } ?>
+    </tbody>
+  </table>
 </section>

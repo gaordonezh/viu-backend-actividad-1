@@ -35,26 +35,21 @@
       </div>
     </nav>
   </header>
-  <main class="container py-4" style="height: calc(100vh - 304px); overflow: auto;">
+  <main class="container py-4" style="height: calc(100vh - 122px); overflow: auto;">
     <?php include($children) ?>
   </main>
   <footer class="bg-white" style="border: 1px solid transparent">
     <div class="container">
-      <h2>FOOTER</h2>
-      <p>Nullam quis risus eget <a href="#">urna mollis ornare</a> vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
-      <p><small>This line of text is meant to be treated as fine print.</small></p>
-      <p>The following is <strong>rendered as bold text</strong>.</p>
-      <p>The following is <em>rendered as italicized text</em>.</p>
-      <p>An abbreviation of the word attribute is <abbr title="attribute">attr</abbr>.</p>
+      <p>FOOTER CONTENT Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla saepe amet eius distinctio voluptates illo, totam corporis repellat? Suscipit quas voluptatibus, asperiores eos consequatur explicabo odit excepturi eaque reprehenderit cupiditate.</p>
     </div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-  <script>
+  <!-- <script>
     setInterval(() => {
       window.location.reload()
     }, 2000);
-  </script>
+  </script> -->
 </body>
 
 </html>

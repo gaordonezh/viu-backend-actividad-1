@@ -2,7 +2,7 @@
   <article>
     <div class="container text-center">
       <div class="row">
-        <?php for ($i = 0; $i < 10; $i++) { ?>
+        <?php for ($i = 0; $i < 20; $i++) { ?>
           <div class="col-sm-6 col-lg-4 col-xl-3 mb-3">
             <div class="card">
               <h3 class="card-header">Card header</h3>
