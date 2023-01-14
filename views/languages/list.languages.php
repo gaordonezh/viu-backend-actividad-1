@@ -13,6 +13,7 @@ $list = $languages->getLanguages();
   <table class="table table-hover">
     <thead>
       <tr class="table-primary">
+        <th>ID</th>
         <th>ISO CODE</th>
         <th>NOMBRE</th>
         <th>ACCIONES</th>
@@ -21,6 +22,7 @@ $list = $languages->getLanguages();
     <tbody>
       <?php foreach ($list as $language) { ?>
         <tr class="table-light">
+          <th><?= $language->id ?></th>
           <th><?= $language->iso_code ?></th>
           <td><?= $language->name ?></td>
           <td>

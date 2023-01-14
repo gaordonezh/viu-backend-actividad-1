@@ -13,7 +13,7 @@ $list = $platforms->getPlatforms();
   <table class="table table-hover">
     <thead>
       <tr class="table-primary">
-        <th>CÓDIGO</th>
+        <th>ID</th>
         <th>NOMBRE</th>
         <th>ACCIONES</th>
       </tr>
