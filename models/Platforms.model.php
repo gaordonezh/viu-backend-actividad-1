@@ -2,7 +2,7 @@
 
 require_once "../../config/Connection.php";
 
-class PlatformModel extends Connection
+class PlatformsModel extends Connection
 {
   public function create($fields)
   {

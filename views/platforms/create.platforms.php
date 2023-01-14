@@ -1,6 +1,6 @@
 <?php
 require_once "../../controllers/Platforms.controller.php";
-$platformInstance = new PlatformController();
+$platformInstance = new PlatformsController();
 
 if (isset($_POST["name"])) {
   $platformInstance->createPlatform((object)["name" => $_POST["name"]]);

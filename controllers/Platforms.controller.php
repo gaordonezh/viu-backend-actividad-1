@@ -1,8 +1,8 @@
 <?php
 
-require_once "../../models/Platform.model.php";
+require_once "../../models/Platforms.model.php";
 
-class PlatformController extends PlatformModel
+class PlatformsController extends PlatformsModel
 {
   /**
    * CREATE PLATFORM
@@ -21,7 +21,7 @@ class PlatformController extends PlatformModel
     $result = $this->get();
 
     $platforms = [];
-    while ($platform = $result->fetch_object(PlatformModel::class))
+    while ($platform = $result->fetch_object(PlatformsModel::class))
       array_push($platforms, $platform);
 
     return $platforms;
@@ -53,6 +53,6 @@ class PlatformController extends PlatformModel
   public function getPlatformById($platformId)
   {
     $result = $this->getById($platformId);
-    return $result->fetch_object(PlatformModel::class);
+    return $result->fetch_object(PlatformsModel::class);
   }
 }

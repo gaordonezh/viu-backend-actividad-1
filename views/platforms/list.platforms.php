@@ -1,7 +1,7 @@
 <?php
 require_once "../../controllers/Platforms.controller.php";
 
-$platforms = new PlatformController();
+$platforms = new PlatformsController();
 $list = $platforms->getPlatforms();
 ?>
 <section>
