@@ -20,7 +20,7 @@ class PlatformModel extends Connection
     $prepare->execute();
     $result = $prepare->get_result();
 
-    return $result->fetch_object(PlatformModel::class);
+    return $result;
   }
 
   public function get()
@@ -30,11 +30,7 @@ class PlatformModel extends Connection
     $prepare->execute();
     $result = $prepare->get_result();
 
-    $platforms = [];
-    while ($platform = $result->fetch_object(PlatformModel::class))
-      array_push($platforms, $platform);
-
-    return $platforms;
+    return $result;
   }
 
   public function update($platformId, $fields)

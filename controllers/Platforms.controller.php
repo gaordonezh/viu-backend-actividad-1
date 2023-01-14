@@ -18,7 +18,13 @@ class PlatformController extends PlatformModel
    */
   public function getPlatforms()
   {
-    return $this->get();
+    $result = $this->get();
+
+    $platforms = [];
+    while ($platform = $result->fetch_object(PlatformModel::class))
+      array_push($platforms, $platform);
+
+    return $platforms;
   }
 
   /**
@@ -46,6 +52,7 @@ class PlatformController extends PlatformModel
    */
   public function getPlatformById($platformId)
   {
-    return $this->getById($platformId);
+    $result = $this->getById($platformId);
+    return $result->fetch_object(PlatformModel::class);
   }
 }
