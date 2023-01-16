@@ -1,4 +1,4 @@
 <?php
-$title = "Series";
+$title = "Actores";
 $children = "list.actors.php";
 include("../layout/index.php");

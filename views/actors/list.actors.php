@@ -28,7 +28,7 @@ $list = $actors->getActors();
         <th><?= $actor->id ?></th>
         <td><?= $actor->name ?></td>
         <td><?= $actor->last_name ?></td>
-        <td><?= $actor->date_birth ?></td>
+        <td><?= date('d/m/Y', strtotime($actor->date_birth)) ?></td>
         <td><?= $actor->nationality ?></td>
         <td>
           <a href="edit.php?id=<?= $actor->id ?>" class="btn btn-outline-info" style="padding: 5px 10px;">Editar</a>

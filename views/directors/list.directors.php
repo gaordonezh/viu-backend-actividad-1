@@ -28,7 +28,7 @@ $list = $directors->getDirectors();
           <th><?= $director->id ?></th>
           <td><?= $director->name ?></td>
           <td><?= $director->last_name ?></td>
-          <td><?= $director->date_birth ?></td>
+          <td><?= date('d/m/Y', strtotime($director->date_birth)) ?></td>
           <td><?= $director->nationality ?></td>
           <td>
             <a href="edit.php?id=<?= $director->id ?>" class="btn btn-outline-info" style="padding: 5px 10px;">Editar</a>

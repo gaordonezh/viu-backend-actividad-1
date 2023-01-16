@@ -15,12 +15,6 @@ if (isset($_POST["name"]) && isset($_POST["last_name"]) && isset($_POST["date_bi
 }
 ?>
 
-<head>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-  <link href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css' rel='stylesheet' type='text/css'>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js' type='text/javascript'></script>
-</head>
-
 <section>
   <h1>Crear Director</h1>
   <form method="post" action="create.directors.php">
@@ -34,7 +28,7 @@ if (isset($_POST["name"]) && isset($_POST["last_name"]) && isset($_POST["date_bi
     </div>
     <div class="mb-3">
       <label for="iso_code" class="form-label">Fecha de nacimiento</label>
-      <input type="text" required aria-required="La fecha de nacimiento es requerida" class="form-control" name="date_birth" id="date_birth" placeholder="Ingrese...">
+      <input type="date" required aria-required="La fecha de nacimiento es requerida" class="form-control" name="date_birth" id="date_birth">
     </div>
     <script type="text/javascript">
       $(document).ready(function() {
