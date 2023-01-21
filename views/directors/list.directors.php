@@ -1,7 +1,7 @@
 <section>
   <div class="d-flex justify-content-between flex-wrap">
     <h1>Directores</h1>
-    <a type="button" href="create.php" class="btn btn-outline-primary">AGREGAR</a>
+    <a href="create.php" class="btn btn-outline-primary">AGREGAR <i class="fa-solid fa-plus"></i></a>
   </div>
 
   <div style="overflow: auto">
@@ -25,8 +25,10 @@
             <td><?= date('d/m/Y', strtotime($director->date_birth)) ?></td>
             <td><?= $director->nationality ?></td>
             <td>
-              <a href="edit.php?id=<?= $director->id ?>" class="btn btn-outline-info" style="padding: 5px 10px;">Editar</a>
-              <a href="delete.php?id=<?= $director->id ?>" class="btn btn-outline-danger" style="padding: 5px 10px;">Eliminar</a>
+              <div class="btn-group" role="group">
+                <a href="edit.php?id=<?= $director->id ?>" class="btn btn-outline-info" style="padding: 5px 20px"><i class="fa-solid fa-pen"></i></a>
+                <a href="delete.php?id=<?= $director->id ?>" class="btn btn-outline-danger" style="padding: 5px 20px"><i class="fa-solid fa-trash"></i></a>
+              </div>
             </td>
           </tr>
         <?php } ?>
