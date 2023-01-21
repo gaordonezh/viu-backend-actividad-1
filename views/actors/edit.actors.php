@@ -1,23 +1,6 @@
-<?php
-require_once "../../controllers/Actors.controller.php";
-$actorsInstance = new ActorsController();
-
-if (isset($_POST["id"])) {
-  $actorsInstance->updateActor($_POST["id"], (object)[
-    "name" => $_POST["name"],
-    "last_name" => $_POST["last_name"],
-    "date_birth" => $_POST["date_birth"],
-    "nationality" => $_POST["nationality"]
-  ]);
-  header("location: ../actors/");
-}
-
-$values = $actorsInstance->getActorById($_GET["id"]);
-?>
-
 <section>
   <h1>Editar Actor</h1>
-  <form method="post" action="edit.actors.php">
+  <form method="post" action="edit.php">
     <div class="mb-3">
       <label for="name" class="form-label">Nombre</label>
       <input type="text" required aria-required="El nombre es requerido" class="form-control" name="name" id="name" placeholder="Ingrese..." value="<?= $values->name ?>">
@@ -32,7 +15,7 @@ $values = $actorsInstance->getActorById($_GET["id"]);
       <input type="date" required aria-required="La fecha de nacimiento es requerida" class="form-control" name="date_birth" id="date_birth" value="<?= $values->date_birth ?>">
     </div>
     <script type="text/javascript">
-      $(document).ready(function(){
+      $(document).ready(function() {
         $('#date_birth').datepicker({
           "format": "yyyy-mm-dd"
         });

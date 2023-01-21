@@ -1,18 +1,6 @@
-<?php
-require_once "../../controllers/Directors.controller.php";
-$directorsInstance = new DirectorsController();
-
-if (isset($_POST["id"])) {
-  $directorsInstance->deleteDirector($_POST["id"]);
-  header("location: ../directors/");
-}
-
-$values = $directorsInstance->getDirectorById($_GET["id"]);
-?>
-
 <section>
   <h2>Eliminar Director</h2>
-  <form method="post" action="delete.directors.php">
+  <form method="post" action="delete.php">
     <input type="text" hidden required name="id" value="<?= $values->id ?>">
     <div class="mb-3">
       <h4><?= $values->name ?> <?= $values->last_name ?> </h4>

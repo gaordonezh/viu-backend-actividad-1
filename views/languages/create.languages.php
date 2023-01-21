@@ -1,21 +1,6 @@
-<?php
-require_once "../../controllers/Languages.controller.php";
-$languesInstance = new LanguagesController();
-
-if (isset($_POST["name"]) && isset($_POST["iso_code"])) {
-  $fields = (object)[
-    "name" => $_POST["name"],
-    "iso_code" => $_POST["iso_code"]
-  ];
-
-  $languesInstance->createLanguage($fields);
-  header("location: ../languages/");
-}
-?>
-
 <section>
   <h1>Crear Idioma</h1>
-  <form method="post" action="create.languages.php">
+  <form method="post" action="create.php">
     <div class="mb-3">
       <label for="name" class="form-label">Nombre</label>
       <input type="text" required aria-required="El nombre es requerido" class="form-control" name="name" id="name" placeholder="Ingrese..." value="">

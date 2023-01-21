@@ -1,18 +1,6 @@
-<?php
-require_once "../../controllers/Platforms.controller.php";
-$platformInstance = new PlatformsController();
-
-if (isset($_POST["id"])) {
-  $platformInstance->deletePlatform($_POST["id"]);
-  header("location: ../platforms/");
-}
-
-$values = $platformInstance->getPlatformById($_GET["id"]);
-?>
-
 <section>
   <h2>Eliminar plataforma</h2>
-  <form method="post" action="delete.platforms.php">
+  <form method="post" action="delete.php">
     <input type="text" hidden required name="id" value="<?= $values->id ?>">
     <div class="mb-3">
       <h4><?= $values->name ?></h4>

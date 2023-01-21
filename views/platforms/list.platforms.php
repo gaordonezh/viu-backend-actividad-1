@@ -1,9 +1,3 @@
-<?php
-require_once "../../controllers/Platforms.controller.php";
-
-$platforms = new PlatformsController();
-$list = $platforms->getPlatforms();
-?>
 <section>
   <div class="d-flex justify-content-between flex-wrap">
     <h1>Plataformas</h1>

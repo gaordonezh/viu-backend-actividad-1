@@ -1,18 +1,6 @@
-<?php
-require_once "../../controllers/Languages.controller.php";
-$languageInstance = new LanguagesController();
-
-if (isset($_POST["id"])) {
-  $languageInstance->deleteLanguage($_POST["id"]);
-  header("location: ../languages/");
-}
-
-$values = $languageInstance->getLanguageById($_GET["id"]);
-?>
-
 <section>
   <h2>Eliminar Idioma</h2>
-  <form method="post" action="delete.languages.php">
+  <form method="post" action="delete.php">
     <input type="text" hidden required name="id" value="<?= $values->id ?>">
     <div class="mb-3">
       <h4><?= $values->iso_code ?> - <?= $values->name ?></h4>

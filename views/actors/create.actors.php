@@ -1,23 +1,6 @@
-<?php
-require_once "../../controllers/Actors.controller.php";
-$actorsInstance = new ActorsController();
-
-if (isset($_POST["name"]) && isset($_POST["last_name"]) && isset($_POST["date_birth"]) && isset($_POST["nationality"])) {
-  $fields = (object)[
-    "name" => $_POST["name"],
-    "last_name" => $_POST["last_name"],
-    "date_birth" => $_POST["date_birth"],
-    "nationality" => $_POST["nationality"]
-  ];
-
-  $actorsInstance->createActor($fields);
-  header("location: ../actors/");
-}
-?>
-
 <section>
   <h1>Crear Actor</h1>
-  <form method="post" action="create.actors.php">
+  <form method="post" action="create.php">
     <div class="mb-3">
       <label for="name" class="form-label">Nombre</label>
       <input type="text" required aria-required="El nombre es requerido" class="form-control" name="name" id="name" placeholder="Ingrese...">
@@ -28,10 +11,10 @@ if (isset($_POST["name"]) && isset($_POST["last_name"]) && isset($_POST["date_bi
     </div>
     <div class="mb-3">
       <label for="iso_code" class="form-label">Fecha de nacimiento</label>
-      <input type="date" required aria-required="La fecha de nacimiento es requerida" class="form-control" name="date_birth" id="date_birth" >
+      <input type="date" required aria-required="La fecha de nacimiento es requerida" class="form-control" name="date_birth" id="date_birth">
     </div>
     <script type="text/javascript">
-      $(document).ready(function(){
+      $(document).ready(function() {
         $('#date_birth').datepicker({
           "format": "yyyy-mm-dd"
         });
@@ -39,7 +22,7 @@ if (isset($_POST["name"]) && isset($_POST["last_name"]) && isset($_POST["date_bi
     </script>
     <div class="mb-3">
       <label for="iso_code" class="form-label">Nacionalidad</label>
-      <input type="text" required aria-required="La nacionalidad es requerida" class="form-control" name="nationality" id="nationality" placeholder="Ingrese..." >
+      <input type="text" required aria-required="La nacionalidad es requerida" class="form-control" name="nationality" id="nationality" placeholder="Ingrese...">
     </div>
     <a href="../actors/" class="btn btn-outline-danger">Cancelar</a>
     <button type="submit" class="btn btn-outline-info">Guardar</button>

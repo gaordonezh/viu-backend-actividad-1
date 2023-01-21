@@ -1,9 +1,3 @@
-<?php
-require_once "../../controllers/Languages.controller.php";
-
-$languages = new LanguagesController();
-$list = $languages->getLanguages();
-?>
 <section>
   <div class="d-flex justify-content-between flex-wrap">
     <h1>Idiomas</h1>

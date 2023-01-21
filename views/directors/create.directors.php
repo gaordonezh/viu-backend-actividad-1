@@ -1,23 +1,6 @@
-<?php
-require_once "../../controllers/Directors.controller.php";
-$directorsInstance = new DirectorsController();
-
-if (isset($_POST["name"]) && isset($_POST["last_name"]) && isset($_POST["date_birth"]) && isset($_POST["nationality"])) {
-  $fields = (object)[
-    "name" => $_POST["name"],
-    "last_name" => $_POST["last_name"],
-    "date_birth" => $_POST["date_birth"],
-    "nationality" => $_POST["nationality"]
-  ];
-
-  $directorsInstance->createDirector($fields);
-  header("location: ../directors/");
-}
-?>
-
 <section>
   <h1>Crear Director</h1>
-  <form method="post" action="create.directors.php">
+  <form method="post" action="create.php">
     <div class="mb-3">
       <label for="name" class="form-label">Nombre</label>
       <input type="text" required aria-required="El nombre es requerido" class="form-control" name="name" id="name" placeholder="Ingrese...">

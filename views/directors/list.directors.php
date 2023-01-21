@@ -1,10 +1,3 @@
-<?php
-require_once "../../controllers/Directors.controller.php";
-
-$directors = new DirectorsController();
-$list = $directors->getDirectors();
-?>
-
 <section>
   <div class="d-flex justify-content-between flex-wrap">
     <h1>Directores</h1>

@@ -1,21 +1,6 @@
-<?php
-require_once "../../controllers/Languages.controller.php";
-$languageInstance = new LanguagesController();
-
-if (isset($_POST["id"])) {
-  $languageInstance->updateLanguage($_POST["id"], (object)[
-    "name" => $_POST["name"],
-    "iso_code" => $_POST["iso_code"]
-  ]);
-  header("location: ../languages/");
-}
-
-$values = $languageInstance->getLanguageById($_GET["id"]);
-?>
-
 <section>
   <h1>Editar idioma</h1>
-  <form method="post" action="edit.languages.php">
+  <form method="post" action="edit.php">
     <div class="mb-3">
       <label for="name" class="form-label">Nombre</label>
       <input type="text" required aria-required="El nombre es requerido" class="form-control" name="name" id="name" placeholder="Ingrese..." value="<?= $values->name ?>">

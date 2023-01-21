@@ -1,10 +1,3 @@
-<?php
-require_once "../../controllers/Actors.controller.php";
-
-$actors = new ActorsController();
-$list = $actors->getActors();
-?>
-
 <section>
   <div class="d-flex justify-content-between flex-wrap">
     <h1>Actores</h1>
