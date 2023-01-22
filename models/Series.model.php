@@ -17,7 +17,8 @@ class SeriesModel extends Connection
                                               (SELECT GROUP_CONCAT(l.name SEPARATOR '|') FROM serie_language sl LEFT JOIN languages l ON sl.language_id = l.id WHERE s.id = sl.serie_id AND type = 1) AS audios
                                           FROM series s
                                               LEFT JOIN platforms p ON s.platform_id = p.id
-                                              LEFT JOIN directors d ON s.director_id = d.id");
+                                              LEFT JOIN directors d ON s.director_id = d.id
+                                          ORDER BY s.id DESC");
     $prepare->execute();
     $result = $prepare->get_result();
 
@@ -111,5 +112,18 @@ class SeriesModel extends Connection
     $prepare = mysqli_prepare($this->con, "DELETE FROM serie_language WHERE serie_id=?");
     $prepare->bind_param("i", $serieId);
     $prepare->execute();
+  }
+
+  public function validateTitle($title, $serieId)
+  {
+    $this->connect();
+    $prepare = mysqli_prepare($this->con, $serieId ? "SELECT COUNT(*) AS founded FROM series WHERE title=? AND id != ?" : "SELECT COUNT(*) AS founded FROM series WHERE title=?");
+    if ($serieId)
+      $prepare->bind_param("si", $title, $serieId);
+    else
+      $prepare->bind_param("s", $title);
+    $prepare->execute();
+    $result = $prepare->get_result();
+    return $result;
   }
 }

@@ -49,4 +49,17 @@ class LanguagesModel extends Connection
     $prepare->bind_param("i", $languageId);
     $prepare->execute();
   }
+
+  public function validateRecord($name, $isoCode, $languageId)
+  {
+    $this->connect();
+    $prepare = mysqli_prepare($this->con, $languageId ? "SELECT COUNT(*) AS founded FROM languages WHERE name = ? AND iso_code = ? AND id != ?" : "SELECT COUNT(*) AS founded FROM languages WHERE name = ? AND iso_code = ?");
+    if ($languageId)
+      $prepare->bind_param("ssi", $name, $isoCode, $languageId);
+    else
+      $prepare->bind_param("ss", $name, $isoCode);
+    $prepare->execute();
+    $result = $prepare->get_result();
+    return $result;
+  }
 }

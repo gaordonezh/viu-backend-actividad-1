@@ -27,6 +27,7 @@ $errors = (object)[
   "title" => "",
   "platform" => "",
   "director" => "",
+  "exist" => false
 ];
 
 if (isset($_POST["save"])) {
@@ -37,17 +38,23 @@ if (isset($_POST["save"])) {
   $errors->platform = !empty($_POST["platform"]) ? "" : "La plataforma es requerida";
   $errors->director = !empty($_POST["director"]) ? "" : "El director es requerido";
 
-  if (isset($_POST["title"]) && isset($_POST["platform"]) && isset($_POST["director"]) && isset($_POST["actor"]) && isset($_POST["audio"]) && isset($_POST["subtitle"])) {
+  if (!empty($_POST["title"]) && !empty($_POST["platform"]) && !empty($_POST["director"]) && isset($_POST["actor"]) && isset($_POST["audio"]) && isset($_POST["subtitle"])) {
     $serieInstance = new SeriesController();
-    $serieInstance->createSerie((object)[
-      "title" => $_POST["title"],
-      "platform" => $_POST["platform"],
-      "director" => $_POST["director"],
-      "actor" => $_POST["actor"],
-      "audio" => $_POST["audio"],
-      "subtitle" => $_POST["subtitle"]
-    ]);
-    header("location: ../series/");
+    $validateTitle = $serieInstance->getSeriesByTitle($_POST["title"], null);
+
+    if ($validateTitle->founded === 0) {
+      $serieInstance->createSerie((object)[
+        "title" => $_POST["title"],
+        "platform" => $_POST["platform"],
+        "director" => $_POST["director"],
+        "actor" => $_POST["actor"],
+        "audio" => $_POST["audio"],
+        "subtitle" => $_POST["subtitle"]
+      ]);
+      header("location: ../series/");
+    } else {
+      $errors->exist = true;
+    }
   }
 }
 

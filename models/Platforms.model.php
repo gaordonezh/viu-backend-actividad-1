@@ -48,4 +48,17 @@ class PlatformsModel extends Connection
     $prepare->bind_param("i", $platformId);
     $prepare->execute();
   }
+
+  public function validateTitle($title, $platformId)
+  {
+    $this->connect();
+    $prepare = mysqli_prepare($this->con, $platformId ? "SELECT COUNT(*) AS founded FROM platforms WHERE name = ? AND id != ?" : "SELECT COUNT(*) AS founded FROM platforms WHERE name = ?");
+    if ($platformId)
+      $prepare->bind_param("si", $title, $platformId);
+    else
+      $prepare->bind_param("s", $title);
+    $prepare->execute();
+    $result = $prepare->get_result();
+    return $result;
+  }
 }

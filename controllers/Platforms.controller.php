@@ -55,4 +55,15 @@ class PlatformsController extends PlatformsModel
     $result = $this->getById($platformId);
     return $result->fetch_object(PlatformsModel::class);
   }
+
+  /**
+   * VALIDATE EXIST PLATFORM WITH NAME
+   * @param $name as string
+   */
+  public function validateExistName($name, $platformId)
+  {
+    $result = $this->validateTitle($name, $platformId);
+    $parsed = $result->fetch_object(PlatformsModel::class);
+    return $parsed->founded;
+  }
 }

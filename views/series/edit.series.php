@@ -1,5 +1,13 @@
 <section>
-  <h1>Editar serie</h1>
+  <div class="d-flex justify-content-between flex-wrap">
+    <h1>Editar serie</h1>
+    <?php if ($errors->exist) { ?>
+      <div class="alert alert-dismissible alert-danger m-0 color-white">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <p class="text-white m-0">Ya existe una serie creada con el mismo título.</p>
+      </div>
+    <?php } ?>
+  </div>
   <form method="post" action="edit.php?id=<?= $_GET["id"] ?>">
     <div class="form-group">
       <label for="title" class="form-label">Título <small class="text-danger" style="font-size: 12px;"><?= $errors->title ?></small></label>

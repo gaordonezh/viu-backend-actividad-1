@@ -1,6 +1,6 @@
 <section>
   <h2>Eliminar serie</h2>
-  <form method="post" action="delete.php">
+  <form method="post" action="delete.php?id=<?= $_GET["id"] ?>">
     <input type="text" hidden required name="id" value="<?= $values->id ?>">
     <div class="mb-3">
       <h4><?= $values->title ?></h4>

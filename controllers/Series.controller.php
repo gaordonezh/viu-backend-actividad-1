@@ -115,4 +115,15 @@ class SeriesController extends SeriesModel
 
     return $filtered;
   }
+
+  /**
+   * VALIDATE EXIST SERIE WITH TITLE
+   * @param $serieId as number
+   */
+  public function getSeriesByTitle($title, $serieId)
+  {
+    $result = $this->validateTitle($title, $serieId);
+    $parsed = $result->fetch_object(SeriesModel::class);
+    return $parsed;
+  }
 }

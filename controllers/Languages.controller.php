@@ -55,4 +55,15 @@ class LanguagesController extends LanguagesModel
     $result = $this->getById($languageId);
     return $result->fetch_object(LanguagesModel::class);
   }
+
+  /**
+   * GET LANGUAGE BY ID
+   * @param $languageId as number
+   */
+  public function validateExistRecord($name, $isoCode, $languageId)
+  {
+    $result = $this->validateRecord($name, $isoCode, $languageId);
+    $parse = $result->fetch_object(LanguagesModel::class);
+    return $parse->founded;
+  }
 }

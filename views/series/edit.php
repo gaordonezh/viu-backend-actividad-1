@@ -5,10 +5,10 @@ require_once "../../controllers/Platforms.controller.php";
 require_once "../../controllers/Directors.controller.php";
 require_once "../../controllers/Languages.controller.php";
 
-$seriesInstance = new SeriesController();
-$serieObtained = $seriesInstance->getSerieById($_GET["id"]);
-$languagesObtained = $seriesInstance->getLanguagesBySerie($_GET["id"]);
-$actorObtained = $seriesInstance->getActorsBySerie($_GET["id"]);
+$serieInstance = new SeriesController();
+$serieObtained = $serieInstance->getSerieById($_GET["id"]);
+$languagesObtained = $serieInstance->getLanguagesBySerie($_GET["id"]);
+$actorObtained = $serieInstance->getActorsBySerie($_GET["id"]);
 
 $platforms = new PlatformsController();
 $platformList = $platforms->getPlatforms();
@@ -32,6 +32,7 @@ $errors = (object)[
   "title" => "",
   "platform" => "",
   "director" => "",
+  "exist" => false
 ];
 
 if (isset($_POST["save"])) {
@@ -42,16 +43,22 @@ if (isset($_POST["save"])) {
   $errors->platform = !empty($_POST["platform"]) ? "" : "La plataforma es requerida";
   $errors->director = !empty($_POST["director"]) ? "" : "El director es requerido";
 
-  if (isset($_POST["title"]) && isset($_POST["platform"]) && isset($_POST["director"]) && isset($_POST["actor"]) && isset($_POST["audio"]) && isset($_POST["subtitle"])) {
-    $seriesInstance->updateSerie($serieObtained->id, (object)[
-      "title" => $_POST["title"],
-      "platform" => $_POST["platform"],
-      "director" => $_POST["director"],
-      "actor" => $_POST["actor"],
-      "audio" => $_POST["audio"],
-      "subtitle" => $_POST["subtitle"]
-    ]);
-    header("location: ../series/");
+  if (!empty($_POST["title"]) && !empty($_POST["platform"]) && !empty($_POST["director"]) && isset($_POST["actor"]) && isset($_POST["audio"]) && isset($_POST["subtitle"])) {
+    $validateTitle = $serieInstance->getSeriesByTitle($_POST["title"], $serieObtained->id);
+
+    if ($validateTitle->founded === 0) {
+      $serieInstance->updateSerie($serieObtained->id, (object)[
+        "title" => $_POST["title"],
+        "platform" => $_POST["platform"],
+        "director" => $_POST["director"],
+        "actor" => $_POST["actor"],
+        "audio" => $_POST["audio"],
+        "subtitle" => $_POST["subtitle"]
+      ]);
+      header("location: ../series/");
+    } else {
+      $errors->exist = true;
+    }
   }
 }
 

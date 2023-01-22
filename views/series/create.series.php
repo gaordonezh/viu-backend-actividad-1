@@ -1,5 +1,13 @@
 <section>
-  <h1>Crear serie</h1>
+  <div class="d-flex justify-content-between flex-wrap">
+    <h1>Crear serie</h1>
+    <?php if ($errors->exist) { ?>
+      <div class="alert alert-dismissible alert-danger m-0 color-white">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <p class="text-white m-0">Ya existe una serie creada con el mismo título.</p>
+      </div>
+    <?php } ?>
+  </div>
   <form method="post" action="create.php">
     <div class="form-group">
       <label for="title" class="form-label">Título <small class="text-danger" style="font-size: 12px;"><?= $errors->title ?></small></label>
@@ -28,7 +36,7 @@
       <div class="row px-2">
         <?php foreach ($actorList as $actor) {  ?>
           <div class="form-check form-switch col-12 col-sm-12 col-md-6 col-lg-4">
-            <input class="form-check-input" type="checkbox" id="actor_check_<?= $actor->id ?>" name="actor[]" value="<?= $actor->id ?>">
+            <input class="form-check-input" type="checkbox" id="actor_check_<?= $actor->id ?>" name="actor[]" value="<?= $actor->id ?>" <?= isset($_POST["actor"]) ? (gettype(array_search($actor->id, $_POST["actor"])) === "integer" ? "checked" : "") : "" ?>>
             <label class="form-check-label" for="actor_check_<?= $actor->id ?>"><?= $actor->name ?> <?= $actor->last_name ?></label>
           </div>
         <?php } ?>
@@ -39,7 +47,7 @@
       <div class="row px-2">
         <?php foreach ($languageList as $audio) {  ?>
           <div class="form-check form-switch col-12 col-sm-12 col-md-6 col-lg-4">
-            <input class="form-check-input" type="checkbox" id="audio_check_<?= $audio->id ?>" name="audio[]" value="<?= $audio->id ?>">
+            <input class="form-check-input" type="checkbox" id="audio_check_<?= $audio->id ?>" name="audio[]" value="<?= $audio->id ?>" <?= isset($_POST["audio"]) ? (gettype(array_search($audio->id, $_POST["audio"])) === "integer" ? "checked" : "") : "" ?>>
             <label class="form-check-label" for="audio_check_<?= $audio->id ?>"><?= $audio->name ?></label>
           </div>
         <?php } ?>
@@ -50,7 +58,7 @@
       <div class="row px-2">
         <?php foreach ($languageList as $subtitle) {  ?>
           <div class="form-check form-switch col-12 col-sm-12 col-md-6 col-lg-4">
-            <input class="form-check-input" type="checkbox" id="subtitle_check_<?= $subtitle->id ?>" name="subtitle[]" value="<?= $subtitle->id ?>">
+            <input class="form-check-input" type="checkbox" id="subtitle_check_<?= $subtitle->id ?>" name="subtitle[]" value="<?= $subtitle->id ?>" <?= isset($_POST["subtitle"]) ? (gettype(array_search($subtitle->id, $_POST["subtitle"])) === "integer" ? "checked" : "") : "" ?>>
             <label class="form-check-label" for="subtitle_check_<?= $subtitle->id ?>"><?= $subtitle->name ?></label>
           </div>
         <?php } ?>
