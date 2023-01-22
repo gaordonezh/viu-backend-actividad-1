@@ -16,23 +16,30 @@
           <th>ACCIONES</th>
         </tr>
       </thead>
-      <tbody>
-        <?php foreach ($list as $actor) { ?>
-          <tr class="table-light">
-            <th><?= $actor->id ?></th>
-            <td><?= $actor->name ?></td>
-            <td><?= $actor->last_name ?></td>
-            <td><?= date('d/m/Y', strtotime($actor->date_birth)) ?></td>
-            <td><?= $actor->nationality ?></td>
-            <td>
-              <div class="btn-group" role="group">
-                <a href="edit.php?id=<?= $actor->id ?>" class="btn btn-outline-info" style="padding: 5px 20px"><i class="fa-solid fa-pen"></i></a>
-                <a href="delete.php?id=<?= $actor->id ?>" class="btn btn-outline-danger" style="padding: 5px 20px"><i class="fa-solid fa-trash"></i></a>
-              </div>
-            </td>
-          </tr>
-        <?php } ?>
-      </tbody>
+      <?php if (count($list) > 0) {  ?>
+        <tbody>
+          <?php foreach ($list as $actor) { ?>
+            <tr class="table-light">
+              <th><?= $actor->id ?></th>
+              <td><?= $actor->name ?></td>
+              <td><?= $actor->last_name ?></td>
+              <td><?= date('d/m/Y', strtotime($actor->date_birth)) ?></td>
+              <td><?= $actor->nationality ?></td>
+              <td>
+                <div class="btn-group" role="group">
+                  <a href="edit.php?id=<?= $actor->id ?>" class="btn btn-outline-info" style="padding: 5px 20px"><i class="fa-solid fa-pen"></i></a>
+                  <a href="delete.php?id=<?= $actor->id ?>" class="btn btn-outline-danger" style="padding: 5px 20px"><i class="fa-solid fa-trash"></i></a>
+                </div>
+              </td>
+            </tr>
+          <?php } ?>
+        </tbody>
+      <?php } else { ?>
+        <caption class="text-center">
+          <img src="../../assets/images/empty.png" alt="No data" height="100px" />
+          <p class="card-title h5 mt-5">Aquí se mostrarán los actores registrados...</p>
+        </caption>
+      <?php } ?>
     </table>
   </div>
 </section>
