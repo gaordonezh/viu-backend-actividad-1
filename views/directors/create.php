@@ -4,18 +4,36 @@ require_once "../../controllers/Directors.controller.php";
 $title = "Crear director";
 $children = "create.directors.php";
 
-$directorsInstance = new DirectorsController();
+$errors = (object)[
+  "name" => "",
+  "last_name" => "",
+  "date_birth" => "",
+  "nationality" => "",
+  "exist" => false
+];
 
-if (isset($_POST["name"]) && isset($_POST["last_name"]) && isset($_POST["date_birth"]) && isset($_POST["nationality"])) {
-  $fields = (object)[
-    "name" => $_POST["name"],
-    "last_name" => $_POST["last_name"],
-    "date_birth" => $_POST["date_birth"],
-    "nationality" => $_POST["nationality"]
-  ];
+if (isset($_POST["save"])) {
+  $errors->name = !empty($_POST["name"]) ? "" : "El nombre es requerido";
+  $errors->last_name = !empty($_POST["last_name"]) ? "" : "El apellido es requerido";
+  $errors->date_birth = !empty($_POST["date_birth"]) ? "" : "La fecha de nacimiento es requerido";
+  $errors->nationality = !empty($_POST["nationality"]) ? "" : "La nacionalidad es requerida";
 
-  $directorsInstance->createDirector($fields);
-  header("location: ../directors/");
+  if (!empty($_POST["name"]) && !empty($_POST["last_name"]) && !empty($_POST["date_birth"]) && !empty($_POST["nationality"])) {
+    $directorsInstance = new DirectorsController();
+    $totalFounded = $directorsInstance->validateDirectorNames($_POST["name"], $_POST["last_name"], null);
+
+    if ($totalFounded === 0) {
+      $directorsInstance->createDirector((object)[
+        "name" => $_POST["name"],
+        "last_name" => $_POST["last_name"],
+        "date_birth" => $_POST["date_birth"],
+        "nationality" => $_POST["nationality"]
+      ]);
+      header("location: ../directors/");
+    } else {
+      $errors->exist = true;
+    }
+  }
 }
 
 include("../layout/index.php");

@@ -56,4 +56,15 @@ class DirectorsController extends DirectorsModel
     $result = $this->getById($directorId);
     return $result->fetch_object(DirectorsModel::class);
   }
+
+  /**
+   * GET DIRECTOR BY NAMES
+   * @param $directorId as number, $name as string, $lastName as string
+   */
+  public function validateDirectorNames($name, $lastName, $directorId)
+  {
+    $result = $this->validateRecord($name, $lastName, $directorId);
+    $parse = $result->fetch_object(DirectorsModel::class);
+    return $parse->founded;
+  }
 }

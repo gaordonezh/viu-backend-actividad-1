@@ -48,4 +48,17 @@ class DirectorsModel extends Connection
     $prepare->bind_param("i", $directorId);
     $prepare->execute();
   }
+
+  public function validateRecord($name, $lastName, $directorId)
+  {
+    $this->connect();
+    $prepare = mysqli_prepare($this->con, $directorId ? "SELECT COUNT(*) AS founded FROM directors WHERE name = ? AND last_name = ? AND id != ?" : "SELECT COUNT(*) AS founded FROM directors WHERE name = ? AND last_name = ?");
+    if ($directorId)
+      $prepare->bind_param("ssi", $name, $lastName, $directorId);
+    else
+      $prepare->bind_param("ss", $name, $lastName);
+    $prepare->execute();
+    $result = $prepare->get_result();
+    return $result;
+  }
 }

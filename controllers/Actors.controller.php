@@ -55,4 +55,15 @@ class ActorsController extends ActorsModel{
     $result = $this->getById($actorId);
     return $result->fetch_object(ActorsModel::class);
   }
+
+  /**
+   * GET DIRECTOR BY NAMES
+   * @param $autorId as number, $name as string, $lastName as string
+   */
+  public function validateAutorNames($name, $lastName, $autorId)
+  {
+    $result = $this->validateRecord($name, $lastName, $autorId);
+    $parse = $result->fetch_object(ActorsModel::class);
+    return $parse->founded;
+  }
 }
