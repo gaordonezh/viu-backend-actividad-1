@@ -8,26 +8,42 @@
               <div class="card" style="height: 100%;">
                 <h3 class="card-header"><?= $serie->title ?></h3>
                 <div class="card-body">
-                  <h5 class="card-title">Disfrutala en <strong><?= $serie->platform ?></strong></h5>
-                  <h6 class="card-subtitle text-muted">Dirigido por <strong><?= $serie->director ?></strong></h6>
-                  <div style="text-align: left;">
-                    <p class="card-text">Reparto: </p>
-                    <?php foreach ($serie->actors as $actor) { ?>
-                      <p class="blockquote-footer"><?= $actor ?></p>
-                    <?php } ?>
-                  </div>
+                  <?php if ($serie->platform) { ?>
+                    <h5 class="card-title">Disfrutala en <strong><?= $serie->platform ?></strong></h5>
+                  <?php } ?>
+                  <?php if ($serie->director) { ?>
+                    <h6 class="card-subtitle text-muted">Dirigido por <strong><?= $serie->director ?></strong></h6>
+                  <?php } ?>
+                  <?php if ($serie->actors) { ?>
+                    <div style="text-align: left;">
+                      <p class="card-text">Reparto: </p>
+                      <?php foreach ($serie->actors as $actor) { ?>
+                        <p class="blockquote-footer"><?= $actor ?></p>
+                      <?php } ?>
+                    </div>
+                  <?php } ?>
                 </div>
                 <div class="card-footer d-flex">
                   <div style="width: 50%; text-align: left">
                     <p style="margin: 0" class="card-text">Disponible en: </p>
-                    <?php foreach ($serie->audios as $audio) { ?>
-                      <span class="badge rounded-pill bg-light my-1"><?= $audio ?></span>
+                    <?php
+                    if ($serie->actors) {
+                      foreach ($serie->audios as $audio) { ?>
+                        <span class="badge rounded-pill bg-light my-1"><?= $audio ?></span>
+                      <?php }
+                    } else { ?>
+                      <span class="badge rounded-pill bg-light my-1">Ningún idioma</span>
                     <?php } ?>
                   </div>
                   <div style="width: 50%; text-align: left">
                     <p style="margin: 0" class="card-text">Subtítulado a: </p>
-                    <?php foreach ($serie->subtitles as $subtitle) { ?>
-                      <span class="badge rounded-pill bg-light my-1"><?= $subtitle ?></span>
+                    <?php
+                    if ($serie->actors) {
+                      foreach ($serie->subtitles as $subtitle) { ?>
+                        <span class="badge rounded-pill bg-light my-1"><?= $subtitle ?></span>
+                      <?php }
+                    } else { ?>
+                      <span class="badge rounded-pill bg-light my-1">Ningún idioma</span>
                     <?php } ?>
                   </div>
                 </div>

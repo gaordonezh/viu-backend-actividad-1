@@ -23,67 +23,73 @@
             <tr class="table-light">
               <th><?= $serie->id ?></th>
               <td><?= $serie->title ?></td>
-              <td><?= $serie->platform ?></td>
-              <td><?= $serie->director ?></td>
+              <td><?= $serie->platform ? $serie->platform : "_" ?></td>
+              <td><?= $serie->director ? $serie->director : "_"  ?></td>
               <td>
-                <span class="badge rounded-pill bg-secondary" style="cursor: pointer;" role="button" data-bs-toggle="modal" data-bs-target="#modalDetailsActors<?= $serie->id ?>"><?= count($serie->actors) ?> actore(s) <i class="fa-solid fa-eye"></i></span>
-                <div class="modal fade" id="modalDetailsActors<?= $serie->id ?>">
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title">Actores</h5>
-                      </div>
-                      <div class="modal-body">
-                        <?php foreach ($serie->actors as $actor) { ?>
-                          <p class="blockquote-footer"><?= $actor ?></p>
-                        <?php } ?>
-                      </div>
-                      <div class="modal-footer">
-                        <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <?php if ($serie->actors) { ?>
+                  <span class="badge rounded-pill bg-secondary" style="cursor: pointer;" role="button" data-bs-toggle="modal" data-bs-target="#modalDetailsActors<?= $serie->id ?>"><?= count($serie->actors) ?> actore(s) <i class="fa-solid fa-eye"></i></span>
+                  <div class="modal fade" id="modalDetailsActors<?= $serie->id ?>">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title">Actores</h5>
+                        </div>
+                        <div class="modal-body">
+                          <?php foreach ($serie->actors as $actor) { ?>
+                            <p class="blockquote-footer"><?= $actor ?></p>
+                          <?php } ?>
+                        </div>
+                        <div class="modal-footer">
+                          <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                <?php } else { ?> _<?php } ?>
               </td>
               <td>
-                <span class="badge rounded-pill bg-secondary" style="cursor: pointer;" role="button" data-bs-toggle="modal" data-bs-target="#modalDetailsSubtitles<?= $serie->id ?>"><?= count($serie->subtitles) ?> subtítulo(s) <i class="fa-solid fa-eye"></i></span>
-                <div class="modal fade" id="modalDetailsSubtitles<?= $serie->id ?>">
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title">Idiomas de subtítulos</h5>
-                      </div>
-                      <div class="modal-body">
-                        <?php foreach ($serie->subtitles as $subtitle) { ?>
-                          <p class="blockquote-footer"><?= $subtitle ?></p>
-                        <?php } ?>
-                      </div>
-                      <div class="modal-footer">
-                        <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <?php if ($serie->subtitles) { ?>
+                  <span class="badge rounded-pill bg-secondary" style="cursor: pointer;" role="button" data-bs-toggle="modal" data-bs-target="#modalDetailsSubtitles<?= $serie->id ?>"><?= count($serie->subtitles) ?> subtítulo(s) <i class="fa-solid fa-eye"></i></span>
+                  <div class="modal fade" id="modalDetailsSubtitles<?= $serie->id ?>">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title">Idiomas de subtítulos</h5>
+                        </div>
+                        <div class="modal-body">
+                          <?php foreach ($serie->subtitles as $subtitle) { ?>
+                            <p class="blockquote-footer"><?= $subtitle ?></p>
+                          <?php } ?>
+                        </div>
+                        <div class="modal-footer">
+                          <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                <?php } else { ?> _<?php } ?>
               </td>
               <td>
-                <span class="badge rounded-pill bg-secondary" style="cursor: pointer;" role="button" data-bs-toggle="modal" data-bs-target="#modalDetailsAudio<?= $serie->id ?>"><?= count($serie->audios) ?> audio(s) <i class="fa-solid fa-eye"></i></span>
-                <div class="modal fade" id="modalDetailsAudio<?= $serie->id ?>">
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title">Idiomas de audio</h5>
-                      </div>
-                      <div class="modal-body">
-                        <?php foreach ($serie->audios as $audio) { ?>
-                          <p class="blockquote-footer"><?= $audio ?></p>
-                        <?php } ?>
-                      </div>
-                      <div class="modal-footer">
-                        <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <?php if ($serie->audios) { ?>
+                  <span class="badge rounded-pill bg-secondary" style="cursor: pointer;" role="button" data-bs-toggle="modal" data-bs-target="#modalDetailsAudio<?= $serie->id ?>"><?= count($serie->audios) ?> audio(s) <i class="fa-solid fa-eye"></i></span>
+                  <div class="modal fade" id="modalDetailsAudio<?= $serie->id ?>">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title">Idiomas de audio</h5>
+                        </div>
+                        <div class="modal-body">
+                          <?php foreach ($serie->audios as $audio) { ?>
+                            <p class="blockquote-footer"><?= $audio ?></p>
+                          <?php } ?>
+                        </div>
+                        <div class="modal-footer">
+                          <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                <?php } else { ?> _<?php } ?>
               </td>
               <td>
                 <div class="btn-group" role="group">

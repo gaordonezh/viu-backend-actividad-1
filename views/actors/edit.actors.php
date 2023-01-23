@@ -31,9 +31,5 @@
 </section>
 
 <script type="text/javascript">
-  $(document).ready(function() {
-    $('#date_birth').datepicker({
-      "format": "yyyy-mm-dd"
-    });
-  });
+  document.getElementById('date_birth').max = new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().split("T")[0];
 </script>

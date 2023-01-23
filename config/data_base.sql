@@ -2,7 +2,7 @@ CREATE DATABASE library_db;
 
 CREATE TABLE IF NOT EXISTS platforms (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR (30) NOT NULL UNIQUE
+  name VARCHAR (30) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS languages (
@@ -30,10 +30,10 @@ CREATE TABLE IF NOT EXISTS directors (
 CREATE TABLE IF NOT EXISTS series (
   id INT PRIMARY KEY AUTO_INCREMENT,
   title VARCHAR (50) NOT NULL,
-  platform_id INT NOT NULL,
-  director_id INT NOT NULL,
-  FOREIGN KEY(platform_id) REFERENCES platforms (id) ON DELETE CASCADE,
-  FOREIGN KEY(director_id) REFERENCES directors (id) ON DELETE CASCADE
+  platform_id INT,
+  director_id INT,
+  FOREIGN KEY(platform_id) REFERENCES platforms (id) ON DELETE SET NULL,
+  FOREIGN KEY(director_id) REFERENCES directors (id) ON DELETE SET NULL
 );
 
 CREATE TABLE IF NOT EXISTS serie_actor (
