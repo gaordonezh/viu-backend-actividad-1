@@ -1,5 +1,7 @@
 CREATE DATABASE library_db;
 
+USE library_db;
+
 CREATE TABLE IF NOT EXISTS platforms (
   id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR (30) NOT NULL
