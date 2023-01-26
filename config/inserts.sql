@@ -3,13 +3,13 @@ USE library_db;
 INSERT INTO actors (name, last_name, date_birth, nationality)
 VALUES
   ('Leonardo','Di Caprio','1985-10-02','EEUU'),
-  ('Vin','Diesel','1990','EEUU'),
+  ('Vin','Diesel','1990-12-12','EEUU'),
   ('Juan','Gomez','1989-10-02','INGLATERRA');
 
 INSERT INTO directors (name, last_name, date_birth, nationality)
 VALUES
   ('Guillermo','Del Toro','1975-06-11','MEXICO'),
-  ('Martin','Scorsese','1968','EEUU'),
+  ('Martin','Scorsese','1968-03-02','EEUU'),
   ('Tim','Burton','1958-09-25','EEUU');
 
 INSERT INTO languages (name, iso_code)

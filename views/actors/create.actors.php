@@ -26,7 +26,7 @@
       <input type="text" class="form-control" name="nationality" id="nationality" placeholder="Ingrese..." value="<?= isset($_POST["nationality"]) ? $_POST["nationality"] : "" ?>">
     </div>
     <a href="../directors/" class="btn btn-outline-danger">Cancelar</a>
-    <button type="submit" class="btn btn-outline-info" name="save" value="save">Actualizar</button>
+    <button type="submit" class="btn btn-outline-info" name="save" value="save">Guardar</button>
   </form>
 </section>
 

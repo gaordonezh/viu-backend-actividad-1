@@ -18,6 +18,6 @@
       <input type="text" class="form-control" name="iso_code" id="iso_code" placeholder="Ingrese..." value="<?= isset($_POST["iso_code"]) ? $_POST["iso_code"] : "" ?>" maxlength="4">
     </div>
     <a href="../languages/" class="btn btn-outline-danger">Cancelar</a>
-    <button type="submit" class="btn btn-outline-info" name="save" value="save">Actualizar</button>
+    <button type="submit" class="btn btn-outline-info" name="save" value="save">Guardar</button>
   </form>
 </section>
