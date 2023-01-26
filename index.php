@@ -1,2 +1,3 @@
 <?php
-header("location:views/home");
+echo "<script> window.location.href='./views/home'; </script>";
+/* header("location:views/home"); */

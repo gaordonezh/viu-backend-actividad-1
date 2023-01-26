@@ -5,6 +5,16 @@ class Connection
 
   public function connect()
   {
-    $this->con = mysqli_connect("containers-us-west-70.railway.app:7344", "root", "yvt6IXXJl3weio8bvUtO", "railway");
+    $HOST = "containers-us-west-70.railway.app:7344";
+    $USER = "root";
+    $PASSWORD = "yvt6IXXJl3weio8bvUtO";
+    $DATABASE = "railway";
+
+    /* $HOST = "localhost";
+    $USER = "root";
+    $PASSWORD = "";
+    $DATABASE = "library_db"; */
+
+    $this->con = mysqli_connect($HOST, $USER, $PASSWORD, $DATABASE);
   }
 }
